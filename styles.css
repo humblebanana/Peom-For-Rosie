@@ -25,15 +25,17 @@ body {
     height: 100vh;
     overflow-y: scroll;
     scroll-snap-type: y mandatory;
+    -webkit-overflow-scrolling: touch;
 }
 
 .page {
     height: 100vh;
     scroll-snap-align: start;
+    scroll-snap-stop: always;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 2rem;
+    overflow: hidden;
 }
 
 #page1 { 
@@ -147,5 +149,19 @@ body {
 
 .ending.animate {
     animation: fadeIn 1.5s ease forwards;
+}
+
+/* 禁用默认的滚动行为 */
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+/* 优化移动端滚动体验 */
+@media (max-width: 768px) {
+    .container {
+        -webkit-overflow-scrolling: touch;
+    }
 }
   
