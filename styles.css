@@ -1,0 +1,80 @@
+:root {
+    --page1-bg: #f8e8e8;
+    --page2-bg: #e8f0f8;
+    --page3-bg: #f8f0e8;
+    --text-color: #2c3e50;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Noto Serif SC', serif;
+    line-height: 1.8;
+    color: var(--text-color);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+    height: 100vh;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+}
+
+.page {
+    height: 100vh;
+    scroll-snap-align: start;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+#page1 { background-color: var(--page1-bg); }
+#page2 { background-color: var(--page2-bg); }
+#page3 { background-color: var(--page3-bg); }
+
+.content {
+    max-width: 600px;
+    text-align: center;
+}
+
+.poem p {
+    margin: 0.7em 0;
+    font-size: 1.25rem;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+/* 动画效果 */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 添加动画激活类 */
+.poem p.animate {
+    animation: fadeIn 1.5s ease forwards;
+}
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+    .poem p {
+        font-size: 1rem;
+        margin: 0.3em 0;
+    }
+} 
