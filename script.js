@@ -29,16 +29,37 @@ function triggerPageAnimation(pageIndex) {
     if (!currentPoem) return;
 
     const lines = currentPoem.querySelectorAll('p');
+    const totalDelay = lines.length * 300; // 计算诗句显示完的总时间
+
+    // 重置并触发诗句动画
     lines.forEach((line, i) => {
-        // 移除之前的动画类
         line.classList.remove('animate');
-        
-        // 强制重排
         line.offsetHeight;
-        
-        // 添加动画类，并设置延迟
         setTimeout(() => {
             line.classList.add('animate');
         }, i * 300);
     });
+
+    // 处理箭头或结束语的动画
+    if (pageIndex < 2) {
+        // 第一页和第二页的箭头
+        const arrow = document.querySelectorAll('.arrow-down')[pageIndex];
+        if (arrow) {
+            arrow.classList.remove('animate');
+            arrow.offsetHeight;
+            setTimeout(() => {
+                arrow.classList.add('animate');
+            }, totalDelay + 500); // 在诗句显示完后延迟500ms显示
+        }
+    } else {
+        // 第三页的结束语
+        const ending = document.querySelector('.ending');
+        if (ending) {
+            ending.classList.remove('animate');
+            ending.offsetHeight;
+            setTimeout(() => {
+                ending.classList.add('animate');
+            }, totalDelay + 500);
+        }
+    }
 }

@@ -36,13 +36,41 @@ body {
     padding: 2rem;
 }
 
-#page1 { background-color: var(--page1-bg); }
-#page2 { background-color: var(--page2-bg); }
-#page3 { background-color: var(--page3-bg); }
+#page1 { 
+    /* 白桂花：纯净的白色到温暖的米黄色渐变，体现桂花的清雅与温润 */
+    background: linear-gradient(135deg, 
+        #ffffff 0%, 
+        #fff9f0 35%, 
+        #fdf4e5 65%, 
+        #f8ecd8 100%
+    );
+}
+
+#page2 { 
+    /* 鸢尾花：从浅紫到深紫蓝的渐变，展现鸢尾花的高贵与神秘 */
+    background: linear-gradient(135deg, 
+        #e8e6f2 0%, 
+        #d5d1e8 35%, 
+        #9790c4 65%, 
+        #5d5494 100%
+    );
+}
+
+#page3 { 
+    /* 太阳花：明亮的黄色到温暖的橙红色渐变，象征阳光的生命力 */
+    background: linear-gradient(135deg, 
+        #fff7e6 0%, 
+        #ffe4b3 35%, 
+        #ffd180 65%, 
+        #ffb74d 100%
+    );
+}
 
 .content {
     max-width: 600px;
     text-align: center;
+    position: relative;
+    padding-bottom: 20px;
 }
 
 .poem p {
@@ -78,3 +106,46 @@ body {
         margin: 0.3em 0;
     }
 } 
+
+/* 修改箭头样式 */
+.arrow-down {
+    width: 20px;
+    height: 20px;
+    border-right: 2px solid rgba(0, 0, 0, 0.3);
+    border-bottom: 2px solid rgba(0, 0, 0, 0.3);
+    transform: rotate(45deg);
+    margin: 40px auto;
+    opacity: 0; /* 初始状态为隐藏 */
+}
+
+/* 箭头动画 */
+@keyframes fadeInBounce {
+    0% {
+        opacity: 0;
+        transform: translateY(-10px) rotate(45deg);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) rotate(45deg);
+    }
+}
+
+.arrow-down.animate {
+    animation: fadeInBounce 1.5s ease forwards;
+}
+
+/* 修改结束语样式 */
+.ending {
+    margin-top: 40px;
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1rem;
+    color: rgba(0, 0, 0, 0.6);
+    font-style: italic;
+    letter-spacing: 0.05em;
+    opacity: 0;
+}
+
+.ending.animate {
+    animation: fadeIn 1.5s ease forwards;
+}
+  
